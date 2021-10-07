@@ -3,7 +3,7 @@
 let firstNumber = [];
 let secondNumber = [];
 let operator = undefined;
-let dot = document.querySelector(".dot").innerHTML;
+let totalResult = "";
 
 
 
@@ -33,6 +33,7 @@ numbers.forEach(function(button){   //forEach will call a funtion once for each 
             console.log("second" + secondNumber)
         }
 
+        updateView();
     });
 });
 
@@ -49,7 +50,19 @@ operators.forEach(function(operant){
 
 const equals = document.querySelector(".equals");  
     equals.addEventListener('click', ()=>{
-        
+        if(operator === "+"){
+            addition();
+            updateView();
+        }else if(operator === "-"){
+            sustraction();
+            updateView();
+        }else if(operator === "*"){
+            multiply();
+            updateView();
+        }else if(operator === "÷"){
+            divide();
+            updateView();
+        }
     });
 
 
@@ -61,13 +74,37 @@ const equals = document.querySelector(".equals");
     };*/
 
 function clearScreen(){
-    userInput = " ";
+    firstNumber = [];
+    secondNumber = [];
+    operator = undefined;
+    totalResult = "";
     document.querySelector(".sub-screen-1").innerHTML = " ";
     document.querySelector(".sub-screen-2").innerHTML = " ";
     document.querySelector(".total").innerHTML = " ";
  }; 
 
-function addition(firstNumber, userInput){
-    return firstNumber + userInput;
+ function updateView(){
+    document.querySelector(".sub-screen-1").innerHTML = firstNumber.join("");
+    document.querySelector(".sub-screen-2").innerHTML = secondNumber.join("");
+    document.querySelector(".total").innerHTML = totalResult; 
+ }
+
+function addition(){
+    totalResult = parseInt(firstNumber.join("")) + parseInt(secondNumber.join(""));
+    return totalResult
 };
 
+function sustraction(){
+    totalResult = parseInt(firstNumber.join("")) - parseInt(secondNumber.join(""));
+    return totalResult
+};
+
+function multiply(){
+    totalResult = parseInt(firstNumber.join("")) * parseInt(secondNumber.join(""));
+    return totalResult
+};
+
+function divide(){
+    totalResult = parseInt(firstNumber.join("")) / parseInt(secondNumber.join(""));
+    return totalResult
+};
