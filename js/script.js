@@ -5,8 +5,6 @@ let secondNumber = [];
 let operator = undefined;
 let totalResult = "";
 
-
-
 /*=======EVENTS===========*/
 window.addEventListener('load', ()=>{
     clearScreen();
@@ -16,10 +14,6 @@ const clear = document.querySelector(".clear");
 clear.addEventListener('click', ()=>{
     clearScreen();
 })
-
-
-
-
 
 const numbers = document.querySelectorAll(".number");   //return a node list from all the html elements that has the .number class
 numbers.forEach(function(button){   //forEach will call a funtion once for each of the elements in the array or node list
@@ -37,8 +31,6 @@ numbers.forEach(function(button){   //forEach will call a funtion once for each 
     });
 });
 
-
-
 const operators = document.querySelectorAll(".operator");  
 operators.forEach(function(operant){  
     operant.addEventListener('click', ()=>{    
@@ -46,7 +38,6 @@ operators.forEach(function(operant){
           
     });
 });
-
 
 const equals = document.querySelector(".equals");  
     equals.addEventListener('click', ()=>{
@@ -64,9 +55,6 @@ const equals = document.querySelector(".equals");
             updateView();
         }
     });
-
-
-
 
 /*============FUNCTIONS=================
  function update(userInput){
