@@ -2,7 +2,7 @@
 
 let firstNumber = [];
 let secondNumber = [];
-let operator = "";
+let operator = undefined;
 let dot = document.querySelector(".dot").innerHTML;
 
 
@@ -24,8 +24,15 @@ clear.addEventListener('click', ()=>{
 const numbers = document.querySelectorAll(".number");   //return a node list from all the html elements that has the .number class
 numbers.forEach(function(button){   //forEach will call a funtion once for each of the elements in the array or node list
     button.addEventListener('click', ()=>{      //addEventListener will take two arguments the trigger event and a function
-        firstNumber.push(parseInt(button.innerHTML))
-        console.log(firstNumber)          
+        if(operator === undefined){
+            firstNumber.push(button.innerHTML)
+            console.log("first number" + firstNumber)
+        }
+        else{
+            secondNumber.push(button.innerHTML)
+            console.log("second" + secondNumber)
+        }
+
     });
 });
 
@@ -34,12 +41,7 @@ numbers.forEach(function(button){   //forEach will call a funtion once for each 
 const operators = document.querySelectorAll(".operator");  
 operators.forEach(function(operant){  
     operant.addEventListener('click', ()=>{    
-           operator = operant;
-           firstNumber = [];
-           console.log(firstNumber)
-           secondNumber = firstNumber;
-           console.log('this is first ' + firstNumber)
-           console.log('this is the second' + secondNumber) 
+            operator = operant.innerHTML
           
     });
 });
@@ -47,7 +49,7 @@ operators.forEach(function(operant){
 
 const equals = document.querySelector(".equals");  
     equals.addEventListener('click', ()=>{
-        console.log('first ' + firstNumber, 'second ' + secondNumber)
+        
     });
 
 
