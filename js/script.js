@@ -4,6 +4,7 @@ let firstNumber = [];
 let secondNumber = [];
 let operator = undefined;
 let totalResult = "";
+let counter = totalResult;
 
 /*=======EVENTS===========*/
 window.addEventListener('load', ()=>{
@@ -18,11 +19,10 @@ clear.addEventListener('click', ()=>{
 const numbers = document.querySelectorAll(".number");   //return a node list from all the html elements that has the .number class
 numbers.forEach(function(button){   //forEach will call a funtion once for each of the elements in the array or node list
     button.addEventListener('click', ()=>{      //addEventListener will take two arguments the trigger event and a function
-        if(operator === undefined){
+        if(operator === undefined || firstNumber.length === 0){
             firstNumber.push(button.innerHTML)
             console.log("first number" + firstNumber)
-        }
-        else{
+        }else{
             secondNumber.push(button.innerHTML)
             console.log("second" + secondNumber)
         }
@@ -35,7 +35,7 @@ const operators = document.querySelectorAll(".operator");
 operators.forEach(function(operant){  
     operant.addEventListener('click', ()=>{    
             operator = operant.innerHTML
-          
+
     });
 });
 
@@ -65,7 +65,7 @@ function clearScreen(){
     firstNumber = [];
     secondNumber = [];
     operator = undefined;
-    totalResult = "";
+    //totalResult = "";
     document.querySelector(".sub-screen-1").innerHTML = " ";
     document.querySelector(".sub-screen-2").innerHTML = " ";
     document.querySelector(".total").innerHTML = " ";
