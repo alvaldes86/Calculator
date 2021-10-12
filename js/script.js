@@ -4,7 +4,9 @@ let firstNumber = [];
 let secondNumber = [];
 let operator = undefined;
 let totalResult = "";
-
+console.log('x' + firstNumber);
+console.log('y' + secondNumber);
+console.log(operator);
 
 /*=======EVENTS===========*/
 window.addEventListener('load', ()=>{
@@ -14,6 +16,9 @@ window.addEventListener('load', ()=>{
 const clear = document.querySelector(".clear");
 clear.addEventListener('click', ()=>{
     clearScreen();
+    console.log('x' + firstNumber);
+    console.log('y' + secondNumber);
+    console.log(operator);
 })
 
 const numbers = document.querySelectorAll(".number");   //return a node list from all the html elements that has the .number class
@@ -24,7 +29,9 @@ numbers.forEach(function(button){   //forEach will call a funtion once for each 
         }else{
             secondNumber.push(button.innerHTML)
         }
-
+        console.log('x' + firstNumber);
+        console.log('y' + secondNumber);
+        console.log(operator);
         updateView();
     });
 });
@@ -33,14 +40,22 @@ const operators = document.querySelectorAll(".operator");
 operators.forEach(function(operant){  
     operant.addEventListener('click', ()=>{    
             operator = operant.innerHTML
-
+            console.log('x' + firstNumber);
+            console.log('y' + secondNumber);
+            console.log(operator);
     });
 });
 
 const equals = document.querySelector(".equals");  
     equals.addEventListener('click', ()=>{
+        console.log('x' + firstNumber);
+        console.log('y' + secondNumber);
+        console.log(operator);
+
         if(operator === "+"){
             addition();
+            firstNumber = totalResult;
+            secondNumber = [];
             updateView();
         }else if(operator === "-"){
             sustraction();
@@ -79,7 +94,7 @@ function clearScreen(){
  }; 
 
  function updateView(){
-    document.querySelector(".sub-screen-1").innerHTML = firstNumber.join("");
+    document.querySelector(".sub-screen-1").innerHTML = firstNumber;
     document.querySelector(".sub-screen-2").innerHTML = secondNumber.join("");
     document.querySelector(".total").innerHTML = totalResult; 
  }
