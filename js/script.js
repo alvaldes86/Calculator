@@ -41,7 +41,6 @@ const equals = document.querySelector(".equals");
         if(operator === "+"){
             addition();
             updateView();
-            console.log(typeof total)
         }else if(operator === "-"){
             sustraction();
             updateView();
