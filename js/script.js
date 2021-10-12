@@ -19,12 +19,13 @@ clear.addEventListener('click', ()=>{
 const numbers = document.querySelectorAll(".number");   //return a node list from all the html elements that has the .number class
 numbers.forEach(function(button){   //forEach will call a funtion once for each of the elements in the array or node list
     button.addEventListener('click', ()=>{      //addEventListener will take two arguments the trigger event and a function
-        if(operator === undefined || firstNumber.length === 0){
+        if(operator === undefined || firstNumber === undefined){
             firstNumber.push(button.innerHTML)
-            console.log("first number" + firstNumber)
+            console.log("first number " + firstNumber)
         }else{
+            
             secondNumber.push(button.innerHTML)
-            console.log("second" + secondNumber)
+            console.log("second " + secondNumber)
         }
 
         updateView();
