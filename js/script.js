@@ -1,12 +1,10 @@
 /*========Global Variables=========*/
 
-let firstNumber = [];
-let secondNumber = [];
+let num1 = [];
+let num2 = [];
 let operator = undefined;
-let totalResult = "";
-console.log('x' + firstNumber);
-console.log('y' + secondNumber);
-console.log(operator);
+let total = [];
+
 
 /*=======EVENTS===========*/
 window.addEventListener('load', ()=>{
@@ -16,22 +14,17 @@ window.addEventListener('load', ()=>{
 const clear = document.querySelector(".clear");
 clear.addEventListener('click', ()=>{
     clearScreen();
-    console.log('x' + firstNumber);
-    console.log('y' + secondNumber);
-    console.log(operator);
 })
 
 const numbers = document.querySelectorAll(".number");   //return a node list from all the html elements that has the .number class
 numbers.forEach(function(button){   //forEach will call a funtion once for each of the elements in the array or node list
-    button.addEventListener('click', ()=>{      //addEventListener will take two arguments the trigger event and a function
+    button.addEventListener('click', ()=>{              //addEventListener will take two arguments the trigger event and a function
+        
         if(operator === undefined){
-            firstNumber.push(button.innerHTML)
+            num1.push(parseInt(button.innerHTML))
         }else{
-            secondNumber.push(button.innerHTML)
+            num2.push(parseInt(button.innerHTML))
         }
-        console.log('x' + firstNumber);
-        console.log('y' + secondNumber);
-        console.log(operator);
         updateView();
     });
 });
@@ -40,23 +33,15 @@ const operators = document.querySelectorAll(".operator");
 operators.forEach(function(operant){  
     operant.addEventListener('click', ()=>{    
             operator = operant.innerHTML
-            console.log('x' + firstNumber);
-            console.log('y' + secondNumber);
-            console.log(operator);
     });
 });
 
 const equals = document.querySelector(".equals");  
-    equals.addEventListener('click', ()=>{
-        console.log('x' + firstNumber);
-        console.log('y' + secondNumber);
-        console.log(operator);
-
+    equals.addEventListener('click', ()=>{        
         if(operator === "+"){
             addition();
-            firstNumber = totalResult;
-            secondNumber = [];
             updateView();
+            console.log(typeof total)
         }else if(operator === "-"){
             sustraction();
             updateView();
@@ -67,15 +52,22 @@ const equals = document.querySelector(".equals");
             divide();
             updateView();
         }
+
+        let totalResult = String(total).split("").map((num)=>{
+            return Number(num)
+        })
+        num1 = totalResult;
+        num2 = [];
+        total = " ";
     });
 
 const del = document.querySelector(".del"); 
 del.addEventListener('click', function(button){
         if(operator === undefined){
-            firstNumber.pop();
+            num1.pop();
             updateView();
         }else{
-            secondNumber.pop();
+            num2.pop();
             updateView();
         }
 });
@@ -85,8 +77,8 @@ del.addEventListener('click', function(button){
     };*/
 
 function clearScreen(){
-    firstNumber = [];
-    secondNumber = [];
+    num1 = [];
+    num2 = [];
     operator = undefined;
     document.querySelector(".sub-screen-1").innerHTML = " ";
     document.querySelector(".sub-screen-2").innerHTML = " ";
@@ -94,27 +86,30 @@ function clearScreen(){
  }; 
 
  function updateView(){
-    document.querySelector(".sub-screen-1").innerHTML = firstNumber;
-    document.querySelector(".sub-screen-2").innerHTML = secondNumber.join("");
-    document.querySelector(".total").innerHTML = totalResult; 
+     let x = num1.join("");
+    let y = num2.join("");
+    let result = total
+    document.querySelector(".sub-screen-1").innerHTML = x;
+    document.querySelector(".sub-screen-2").innerHTML = y;
+    document.querySelector(".total").innerHTML = result; 
  }
 
 function addition(){
-    totalResult = parseInt(firstNumber.join("")) + parseInt(secondNumber.join(""));
-    return totalResult
+    total = parseInt(num1.join("")) + parseInt(num2.join(""));
+    return total
 };
 
 function sustraction(){
-    totalResult = parseInt(firstNumber.join("")) - parseInt(secondNumber.join(""));
-    return totalResult
+    total = parseInt(num1.join("")) - parseInt(num2.join(""));
+    return total
 };
 
 function multiply(){
-    totalResult = parseInt(firstNumber.join("")) * parseInt(secondNumber.join(""));
-    return totalResult
+    total = parseInt(num1.join("")) * parseInt(num2.join(""));
+    return total
 };
 
 function divide(){
-    totalResult = parseInt(firstNumber.join("")) / parseInt(secondNumber.join(""));
-    return totalResult
+    total = parseInt(num1.join("")) / parseInt(num2.join(""));
+    return total
 };
