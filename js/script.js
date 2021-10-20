@@ -57,7 +57,7 @@ const equals = document.querySelector(".equals");
         })
         num1 = totalResult;
         num2 = [];
-        total = " ";
+        total = "";
     });
 
 const del = document.querySelector(".del"); 
@@ -79,13 +79,13 @@ function clearScreen(){
     num1 = [];
     num2 = [];
     operator = undefined;
-    document.querySelector(".sub-screen-1").innerHTML = " ";
-    document.querySelector(".sub-screen-2").innerHTML = " ";
-    document.querySelector(".total").innerHTML = " ";
+    document.querySelector(".sub-screen-1").innerHTML = "";
+    document.querySelector(".sub-screen-2").innerHTML = "";
+    document.querySelector(".total").innerHTML = "";
  }; 
 
  function updateView(){
-     let x = num1.join("");
+    let x = num1.join("");
     let y = num2.join("");
     let result = total
     document.querySelector(".sub-screen-1").innerHTML = x;
@@ -95,20 +95,16 @@ function clearScreen(){
 
 function addition(){
     total = parseInt(num1.join("")) + parseInt(num2.join(""));
-    return total
 };
 
 function sustraction(){
     total = parseInt(num1.join("")) - parseInt(num2.join(""));
-    return total
 };
 
 function multiply(){
     total = parseInt(num1.join("")) * parseInt(num2.join(""));
-    return total
 };
 
 function divide(){
     total = parseInt(num1.join("")) / parseInt(num2.join(""));
-    return total
 };
